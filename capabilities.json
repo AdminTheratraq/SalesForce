@@ -1,0 +1,230 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Company",
+            "name": "Company",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Country",
+            "name": "Country",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Executive",
+            "name": "Executive",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Footnote",
+            "name": "Footnote",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "NumberofCM",
+            "name": "NumberofCM",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "NumberofNE",
+            "name": "NumberofNE",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "NumberofReps",
+            "name": "NumberofReps",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Product",
+            "name": "Product",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "RegionalOversight",
+            "name": "RegionalOversight",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "TerritoryCoverage",
+            "name": "TerritoryCoverage",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "TotalFTE",
+            "name": "TotalFTE",
+            "kind": "Grouping"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "Company"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Country"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Executive"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Footnote"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofCM"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofNE"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofReps"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Product"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "RegionalOversight"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "TerritoryCoverage"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "TotalFTE"
+                            }
+                        }
+                    ]
+                },
+                "columns": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "Company"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Country"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Executive"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Footnote"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofCM"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofNE"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "NumberofReps"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Product"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "RegionalOversight"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "TerritoryCoverage"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "TotalFTE"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "objects": {
+        "salesforce": {
+            "displayName": "SalesForce Settings",
+            "properties": {
+                "title": {
+                    "displayName": "Title",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "rowTitles": {
+                    "displayName": "Row Titles",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "footerText": {
+                    "displayName": "Footer Text",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "flag": {
+                    "displayName": "Flag",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "layout": {
+                    "displayName": "Layout",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "imgURL": {
+                    "displayName": "Image URL",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        }
+    },
+    "sorting": {
+        "default": {}
+    },
+    "suppressDefaultTitle": true
+}
