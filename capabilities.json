@@ -6,11 +6,6 @@
             "kind": "Grouping"
         },
         {
-            "displayName": "Country",
-            "name": "Country",
-            "kind": "Grouping"
-        },
-        {
             "displayName": "Footnote",
             "name": "Footnote",
             "kind": "Grouping"
@@ -58,11 +53,6 @@
                         },
                         {
                             "for": {
-                                "in": "Country"
-                            }
-                        },
-                        {
-                            "for": {
                                 "in": "Footnote"
                             }
                         },
@@ -103,11 +93,6 @@
                         {
                             "for": {
                                 "in": "Company"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "Country"
                             }
                         },
                         {

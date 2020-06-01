@@ -46,7 +46,6 @@ import { findOne } from "domutils";
 
 export interface SalesForceStructure {
     Company: String;
-    Country: string;
     Footnote: string;
     Level1: string[];
     Level2: string[];
@@ -122,7 +121,6 @@ export class Visual implements IVisual {
 
     @logExceptions()
     public update(options: VisualUpdateOptions) {
-        debugger;
         this.events.renderingStarted(options);
         console.log('Visual Update ', options);
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
@@ -130,27 +128,8 @@ export class Visual implements IVisual {
         let _this = this;
         this.target.attr('class', 'sales-force-container');
         this.target.attr('style', 'height:' + (options.viewport.height) + 'px;width:' + (options.viewport.width) + 'px');
-        let layoutContentHeight = 0;
-        if (this.settings.salesforce.headerImgURL) {
-            let headerImage = new Image();
-            headerImage.onload = () => {
-                this.headerImgHeight = headerImage.height;
-                layoutContentHeight += headerImage.height;
-                this.target.attr('style', 'height:' + (options.viewport.height - layoutContentHeight) + 'px;width:' + (options.viewport.width) + 'px');
-                this.renderLayout();
-            }
-            headerImage.src = this.settings.salesforce.headerImgURL;
-        }
-        if (this.settings.salesforce.footerImgURL) {
-            let footerImage = new Image();
-            footerImage.onload = () => {
-                this.footerImgHeight = footerImage.height;
-                layoutContentHeight += footerImage.height;
-                this.target.attr('style', 'height:' + (options.viewport.height - layoutContentHeight) + 'px;width:' + (options.viewport.width) + 'px');
-                this.renderLayout();
-            }
-            footerImage.src = this.settings.salesforce.footerImgURL;
-        }
+
+        this.renderHeaderAndFooter(options.viewport.height, options.viewport.width);
 
         let gHeight = options.viewport.height - this.margin.top - this.margin.bottom;
         let gWidth = options.viewport.width - this.margin.left - this.margin.right;
@@ -216,6 +195,10 @@ export class Visual implements IVisual {
 
         this.renderSalesForceRows(salesForceData);
 
+        this.renderLevelRows(salesForceData);
+
+        this.renderFootNoteRow(salesForceData);
+
         this.renderFooterText(mainContent);
 
         this.renderFlag(imageData);
@@ -228,22 +211,37 @@ export class Visual implements IVisual {
         this.events.renderingFinished(options);
     }
 
-    private renderLayout() {
+    private renderHeaderAndFooter(viewportHeight, viewportwidth) {
+        let layoutContentHeight = 0;
         if (this.settings.salesforce.headerImgURL) {
-            this.header
-                .attr('class', 'visual-header')
-                .attr('style', 'height:' + this.headerImgHeight + 'px;')
-                .html(() => {
-                    return '<img src="' + this.settings.salesforce.headerImgURL + '" />';
-                });
+            let headerImage = new Image();
+            headerImage.onload = () => {
+                this.headerImgHeight = headerImage.height;
+                layoutContentHeight += headerImage.height;
+                this.target.attr('style', 'height:' + (viewportHeight - layoutContentHeight) + 'px;width:' + (viewportwidth) + 'px');
+                this.header
+                    .attr('class', 'visual-header')
+                    .attr('style', 'height:' + this.headerImgHeight + 'px;')
+                    .html(() => {
+                        return '<img src="' + this.settings.salesforce.headerImgURL + '" />';
+                    });
+            }
+            headerImage.src = this.settings.salesforce.headerImgURL;
         }
         if (this.settings.salesforce.footerImgURL) {
-            this.footer
-                .attr('class', 'visual-footer')
-                .attr('style', 'height:' + this.footerImgHeight + 'px;')
-                .html(() => {
-                    return '<img src="' + this.settings.salesforce.footerImgURL + '" />';
-                });
+            let footerImage = new Image();
+            footerImage.onload = () => {
+                this.footerImgHeight = footerImage.height;
+                layoutContentHeight += footerImage.height;
+                this.target.attr('style', 'height:' + (viewportHeight - layoutContentHeight) + 'px;width:' + (viewportwidth) + 'px');
+                this.footer
+                    .attr('class', 'visual-footer')
+                    .attr('style', 'height:' + this.footerImgHeight + 'px;')
+                    .html(() => {
+                        return '<img src="' + this.settings.salesforce.footerImgURL + '" />';
+                    });
+            }
+            footerImage.src = this.settings.salesforce.footerImgURL;
         }
     }
 
@@ -314,7 +312,9 @@ export class Visual implements IVisual {
             .text(((d) => {
                 return d.TotalFTE.toString();
             }));
+    }
 
+    private renderLevelRows(salesForceData) {
         this.level1Row.selectAll('.td')
             .data(salesForceData)
             .enter()
@@ -406,7 +406,9 @@ export class Visual implements IVisual {
                     return d.Level4[0] ? '<p>' + sanitizeHtml(d.Level4[0]) + '</p>' : '';
                 }
             }));
+    }
 
+    private renderFootNoteRow(salesForceData) {
         this.footnoteRow.selectAll('.td')
             .data(salesForceData.map(d => d.Footnote))
             .enter()
@@ -443,14 +445,12 @@ export class Visual implements IVisual {
         let tableView = dataView.table;
         let _rows = tableView.rows;
         let _columns = tableView.columns;
-        let _companyIndex = -1, _countryIndex = -1, _footNoteIndex = -1,
+        let _companyIndex = -1, _footNoteIndex = -1,
             _level1Index = [], _level2Index = [], _level3Index = [], _level4Index = [], _productIndex = -1, _fteIndex;
         let level1 = 0, level2 = 0, level3 = 0, level4 = 0;
         for (let ti = 0; ti < _columns.length; ti++) {
             if (_columns[ti].roles.hasOwnProperty("Company")) {
                 _companyIndex = ti;
-            } else if (_columns[ti].roles.hasOwnProperty("Country")) {
-                _countryIndex = ti;
             } else if (_columns[ti].roles.hasOwnProperty("Footnote")) {
                 _footNoteIndex = ti;
             } else if (_columns[ti].roles.hasOwnProperty("Level1")) {
@@ -471,7 +471,6 @@ export class Visual implements IVisual {
             let row = _rows[i];
             let dp: SalesForceStructure = {
                 Company: row[_companyIndex] ? row[_companyIndex].toString() : null,
-                Country: row[_countryIndex] ? row[_countryIndex].toString() : null,
                 Footnote: row[_footNoteIndex] ? row[_footNoteIndex].toString() : null,
                 Level1: [],
                 Level2: [],
