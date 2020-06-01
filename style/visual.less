@@ -2,16 +2,15 @@
 @color1: #558ab8;
 
 .visual-header{
-    height: 110px;
+    width:100%;    
+    max-height: 110px;
     border:1px solid #000000;
     box-sizing: border-box;
 }
 
 .visual-footer{
-    position: absolute;
     width:100%;
-    bottom:0;
-    height: 110px;
+    max-height: 110px;
     border:1px solid #000000;
     box-sizing: border-box;
 }
@@ -27,9 +26,14 @@
     border: 3px solid #444444;    
     box-sizing: border-box;
 
+    .main-content{
+        height:100%;
+    }
+
     .table-wrapper{
         overflow: auto;
         margin: 0 auto;        
+        height: calc(100% - 40px);
     }
 
     table {

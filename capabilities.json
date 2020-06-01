@@ -11,43 +11,33 @@
             "kind": "Grouping"
         },
         {
-            "displayName": "Executive",
-            "name": "Executive",
-            "kind": "Grouping"
-        },
-        {
             "displayName": "Footnote",
             "name": "Footnote",
             "kind": "Grouping"
         },
         {
-            "displayName": "NumberofCM",
-            "name": "NumberofCM",
+            "displayName": "Level 1",
+            "name": "Level1",
             "kind": "Grouping"
         },
         {
-            "displayName": "NumberofNE",
-            "name": "NumberofNE",
+            "displayName": "Level 2",
+            "name": "Level2",
             "kind": "Grouping"
         },
         {
-            "displayName": "NumberofReps",
-            "name": "NumberofReps",
+            "displayName": "Level 3",
+            "name": "Level3",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Level 4",
+            "name": "Level4",
             "kind": "Grouping"
         },
         {
             "displayName": "Product",
             "name": "Product",
-            "kind": "Grouping"
-        },
-        {
-            "displayName": "RegionalOversight",
-            "name": "RegionalOversight",
-            "kind": "Grouping"
-        },
-        {
-            "displayName": "TerritoryCoverage",
-            "name": "TerritoryCoverage",
             "kind": "Grouping"
         },
         {
@@ -73,42 +63,32 @@
                         },
                         {
                             "for": {
-                                "in": "Executive"
-                            }
-                        },
-                        {
-                            "for": {
                                 "in": "Footnote"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofCM"
+                                "in": "Level1"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofNE"
+                                "in": "Level2"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofReps"
+                                "in": "Level3"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Level4"
                             }
                         },
                         {
                             "for": {
                                 "in": "Product"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "RegionalOversight"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "TerritoryCoverage"
                             }
                         },
                         {
@@ -132,42 +112,32 @@
                         },
                         {
                             "for": {
-                                "in": "Executive"
-                            }
-                        },
-                        {
-                            "for": {
                                 "in": "Footnote"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofCM"
+                                "in": "Level1"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofNE"
+                                "in": "Level2"
                             }
                         },
                         {
                             "for": {
-                                "in": "NumberofReps"
+                                "in": "Level3"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Level4"
                             }
                         },
                         {
                             "for": {
                                 "in": "Product"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "RegionalOversight"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "TerritoryCoverage"
                             }
                         },
                         {
@@ -208,14 +178,14 @@
                         "text": true
                     }
                 },
-                "layout": {
-                    "displayName": "Layout",
+                "headerImgURL": {
+                    "displayName": "Header Image URL",
                     "type": {
                         "text": true
                     }
                 },
-                "imgURL": {
-                    "displayName": "Image URL",
+                "footerImgURL": {
+                    "displayName": "Footer Image URL",
                     "type": {
                         "text": true
                     }
